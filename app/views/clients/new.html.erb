@@ -1,0 +1,44 @@
+ <div class="container">
+    <h2 class="validation-title heading-2">Registration</h2>
+        <%= simple_form_for @client, class: "validation__inputs validation__columns"  do |form| %>
+            <div class="row">
+            <div class="col-6">
+                <%= form.input :first_name,
+                            label: 'Your First Name'
+                            %>
+            </div>
+
+            <div class="col-6">
+                <%= form.input :last_name,
+                            label: 'Your Last Name'
+                            %>
+            </div>
+        
+            <div class="col-6">
+                <%= form.input :company,
+                            label: 'Company Name'%>
+            </div>
+            <div class="col-6">
+                <%= form.input :cnpj,
+                            label: 'cnpj',
+                            placeholder: 'Or israel or american number' %>
+            </div>
+            <div class="col-6">
+                <%= form.input :phone,
+                            label: 'phone' %>
+            </div>
+            <div class="col-6">
+                <%= form.input :whatsapp,
+                            label: 'whatsapp', 
+                            placeholder: 'To Quickly contact' %>
+            </div>
+                        <div class="col-12">
+                <%= form.input :address,
+                            label: 'address', 
+                            placeholder: 'Address' %>
+            </div>
+        </div>
+        <p><%= form.submit "Create Your Client Account ", class: "btn btn-primary" %></p>
+
+    <% end %>
+</div>

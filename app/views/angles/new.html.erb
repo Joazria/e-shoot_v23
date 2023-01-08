@@ -1,0 +1,54 @@
+<br><br><br><br><br><br><br><br>
+<div class="container">
+  <h1>Add An Angle </h1>
+
+  <%= simple_form_for [ @order, @angle ] do |f| %>
+    <div class="row">
+        <div class="col-6">
+            <%= f.input :angle_name,
+                        label: 'Choose your Angle',
+                        collection: ['Angle',
+                                    'Back',
+                                    'Back side',
+                                    'Both',
+                                    'Close Up',
+                                    'Detail',
+                                    'Folded',
+                                    'Front',
+                                    'Front Angle Clothed',
+                                    'Front Angle Opened',
+                                    'Ghost',
+                                    'Group',
+                                    'Layflat',
+                                    'Package',
+                                    'Open Product',
+                                    'Out of Package',
+                                    'Profile',
+                                    'Side',
+                                    'Side Front Angle | 1',
+                                    'Side Front Angle | 2',
+                                    'Side Front Standing',
+                                    'Styled | 1',
+                                    'Styled | 2',
+                                    'Top',
+                                    'Top Angle Closed',
+                                    'Top Angle Opened',
+                                    'Half-Top',
+                                    'With Texture' ]
+                         %>
+        </div>
+
+        <div class="col-6">
+            <%= f.input :photo,
+                        label: 'Upload a banner',
+                        as: :file %>
+         </div>
+        <div class="col-12">
+            <%= f.input :description,
+                        label: 'Description',
+                        placeholder: '...' %>
+         </div>
+
+    <p><%= f.submit "Create a new Angle for your Product", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

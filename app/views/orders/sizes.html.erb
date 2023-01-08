@@ -1,0 +1,20 @@
+
+
+<div class="container">
+    <% @sizes.each do |size| %>
+
+        <div class="card m-2" style="width: 18rem;">
+                    <%= image_tag size.photo, class: "card-img-top" %>
+
+            <div class="card-body">
+                <h5 class="card-title"> <%= size.size_name  %> </h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    <%= link_to order_path(@order, size_id: size.id), method: :patch, class: "categories__list-btn btn-primary" do %>
+                        Book a <%= size.size_name %>
+                        <span class="fa-solid fa-arrow-right-long icon"></span>
+                        <% end %>  
+            </div>
+        </div>
+    <% end %>
+</div>

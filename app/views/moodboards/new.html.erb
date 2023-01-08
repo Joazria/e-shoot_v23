@@ -1,0 +1,21 @@
+<br><br><br><br><br><br><br><br>
+<div class="container">
+  <h1>Moodboard Registration </h1>
+    <h1> <%= @product.product_name  %> </h1>
+
+  <%= simple_form_for [ @product, @moodboard ] do |f| %>
+        <div class="row">
+        <div class="col-6">
+            <%= f.input :moodboard_name,
+                        label: 'Moodboard Name' %>
+        </div>
+      
+        <div class="col-6">
+            <%= f.input :photo,
+                        label: 'Upload a photo',
+                        as: :file %>
+         </div>
+
+    <p><%= f.submit "Create Your Moodboard ", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

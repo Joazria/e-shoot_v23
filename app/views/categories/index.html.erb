@@ -1,0 +1,39 @@
+      <% @categories.each do |category| %>
+
+<div class="card" style="width: 18rem;">
+              <%= image_tag category.photo, class: "card-img-top" %>
+
+  <div class="card-body">
+    <h5 class="card-title"> <%= category.category_name  %> </h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+     <%= link_to orders_path(:user_id => current_user , :category_id => category.id), method: :post,  class: "btn btn-success" do %>
+        Book a <%= category.category_name %>
+        <span class="fa-solid fa-arrow-right-long icon"></span>
+    <% end %>
+<br>
+    <%= link_to category_path(category), class: "btn btn-danger" do %>
+        Edit <%= category.category_name %>
+        <span class="fa-solid fa-arrow-right-long icon"></span>
+    <% end %>
+    <br>
+    <%= link_to new_category_angle_path(:category_id => category.id), class: "btn btn-primary" do %>
+        Create an Angle 
+        <span class="fa-solid fa-arrow-right-long icon"></span>
+    <% end %>
+
+    <%= link_to new_category_background_path(:category_id => category.id), class: "btn btn-primary" do %>
+        Create an Background 
+        <span class="fa-solid fa-arrow-right-long icon"></span>
+    <% end %>
+
+      <%= link_to new_category_size_path(:category_id => category.id), class: "btn btn-primary" do %>
+        Create a Size 
+        <span class="fa-solid fa-arrow-right-long icon"></span>
+    <% end %>
+                    
+  </div>
+</div>
+
+
+<% end %>

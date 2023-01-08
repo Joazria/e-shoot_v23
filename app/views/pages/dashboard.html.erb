@@ -1,0 +1,157 @@
+<h2>NEW ORDER</h2>
+
+<table class="table">
+  <thead>
+      <tr>
+      <th scope="col">#</th>
+      <th scope="col"><i class="fas fa-info-circle"></i></th>
+      <th scope="col">Client</th>
+      <th scope="col">Order</th>
+      <th scope="col">Start</th>
+      <th scope="col">Edit</th>
+
+      </tr>
+  </thead>
+<tbody>
+                
+   <% @orders.each do |order| %>   
+      <tr>       
+        <th scope="row"> <%= order.id %> </th>
+        <th scope="col"><i class="fas fa-info-circle"></i></th>
+        <td><%  @client = Client.where(:user_id == order.user.id) %>
+          <%= @client.first.company %> </td>
+        <td><%= order.category.category_name %> </td>
+        <td>
+          <%= link_to new_order_delivery_path(order_id: order.id) do %>
+            <span class= "btn btn-success btn-sm">START</span>          
+          <% end  %>
+        </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+    
+
+
+
+<h2>IN PRODUCTIONS</h2>
+
+<table class="table">
+  <thead>
+      <tr>
+      <th scope="col">#</th>
+      <th scope="col"><i class="fas fa-info-circle"></i></th>
+      <th scope="col">Client</th>
+      <th scope="col">Order</th>
+      <th scope="col">Status</th>
+      <th scope="col">Deadline</th>
+      <th scope="col">Delivery</th>
+      <th scope="col">Edit</th>
+
+      </tr>
+  </thead>
+<tbody>
+                
+   <% @deliveries.each do |delivery| %>   
+      <tr>       
+        <th scope="row"> <%= delivery.order_id %> </th>
+        <td scope="col"><i class="fas fa-info-circle"></i></td>
+        <td><%  @client = Client.where(:user_id == delivery.order.user.id) %>
+          <%= @client.first.company %> </td>
+        <td><%= delivery.order.category.category_name %> </td>
+        <td>
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <% if delivery.step.nil? %>
+                  <span class="badge badge-primary"> NEW </span>
+
+                    <% else %>
+                      <span class="badge badge-success"> <%= delivery.step %> </span>
+
+                    <% end -%>
+              </button>
+            <ul class="dropdown-menu">
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'Order pending' %>
+                            <%= f.submit 'Order pending', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'Order approved' %>
+                            <%= f.submit 'Order approved', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'Product preparation' %>
+                            <%= f.submit 'Product preparation', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'Photographing' %>
+                            <%= f.submit 'Photographing', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li> 
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'In edit' %>
+                            <%= f.submit 'In edit', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li>     
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'Re-edit' %>
+                            <%= f.submit 'Re-edit', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li>  
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'Waiting for Client Aproval' %>
+                            <%= f.submit 'Waiting for Client Aproval', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li>  
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'Photographing' %>
+                            <%= f.submit 'Waiting for Admin Aproval', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li>     
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'Ship back products' %>
+                            <%= f.submit 'Ship back products', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li>     
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
+                            <%= f.hidden_field :step, value: 'Project Done' %>
+                            <%= f.submit 'Project Done', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                          <% end %></li>  
+            </ul>
+
+
+ 
+. 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+            
+          </div></td>
+        <td>
+
+              <%# if delivery.order_id == order.id %>
+                  <i class="fas fa-calendar-week"></i> 
+                    <%= delivery.delivery_date %> </td>
+
+                      <td> <h2>
+                        <%= link_to delivery.delivery_link, target: :_blank  do  %>
+                          <i class="fas fa-images"></i> 
+                        <% end %>
+                         </h2> </td>
+                      <td>               
+                        <%= link_to edit_delivery_path(delivery) do %>
+                      <h2><i class="fas fa-edit"></i></h2>
+                    <% end %></td>
+               <%# end %>      
+  </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    

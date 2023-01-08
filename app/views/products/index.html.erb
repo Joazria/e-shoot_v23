@@ -1,0 +1,38 @@
+      <% @products.each do |product| %>
+
+<div class="card" style="width: 18rem;">
+              <%= image_tag product.photo, class: "card-img-top" %>
+
+  <div class="card-body">
+    <h5 class="card-title"> <%= product.category_name  %> </h5>
+
+     <%= link_to instudios_path(:user_id => current_user , :product_id => product.id), method: :post,  class: "btn btn-success" do %>
+        Book a <%= product.category_name %>
+        <span class="fa-solid fa-arrow-right-long icon"></span>
+    <% end %>
+<br>
+    <%= link_to edit_product_path(product), class: "btn btn-danger" do %>
+        Edit <%= product.product_name %>
+        <span class="fa-solid fa-arrow-right-long icon"></span>
+    <% end %>
+    <br>
+    <%= link_to new_product_moodboard_path(:product_id => product.id), class: "btn btn-primary" do %>
+        Create a Moodboard 
+        <span class="fa-solid fa-arrow-right-long icon"></span>
+    <% end %>
+
+    <%= link_to new_product_addon_path(:product_id => product.id), class: "btn btn-primary" do %>
+        Create an Add-On
+        <span class="fa-solid fa-arrow-right-long icon"></span>
+    <% end %>
+
+      <%#= link_to new_category_size_path(:category_id => category.id), class: "btn btn-primary" do %>
+        <%# Create a Size  %>
+        <%# <span class="fa-solid fa-arrow-right-long icon"></span> %>
+    <%# end %>
+                    
+  </div>
+</div>
+
+
+<% end %>

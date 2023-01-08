@@ -1,0 +1,29 @@
+<br><br><br><br><br><br><br><br>
+<div class="container">
+  <h1>Studio Request </h1>
+
+  <%= simple_form_for [@instudio, @calendar] do |f| %>
+        <div class="row">
+      
+        <div class="col-12">
+            <%= f.input :manequin,
+                        label: 'Do You Need A Model',
+                        collection: ['Yes', 'No' ]
+                        %>
+         </div>
+                <div class="col-6">
+
+            <%= f.input :period,
+                        label: 'Period/Time',
+                        collection: ['2 Hours', 'Half Day', 'Full Day', ]
+                        %>
+         </div>
+        <div class="col-6">
+            <%= f.input :deadline,
+                        as: :date,
+                        html5: true,
+                        label: 'Choose a Date' %>
+        </div>
+    <p><%= f.submit "Request a Studio Session", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

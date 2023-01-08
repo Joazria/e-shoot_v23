@@ -1,0 +1,27 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+
+
+<div class="container">
+    <div class="card-group">
+    <%= link_to categories_path do %>
+        <div class="card" style="width: 18rem;">
+        <img src="https://res.cloudinary.com/numama/image/upload/v1649683456/Eshoots/Screen_Shot_2022-04-11_at_10.23.46_ppauff.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">24HOURS</p>
+        </div>
+        </div>
+    <% end %>
+    <%= link_to instudios_path do %>
+        <div class="card" style="width: 18rem;">
+            <img src="https://res.cloudinary.com/numama/image/upload/v1651511688/Eshoots/Diesel_7_erilcn.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">IN STUDIO</p>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>
+
+

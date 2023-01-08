@@ -1,0 +1,18 @@
+ 
+
+<div class="container">
+    <% @moodboards.each do |moodboard| %>
+
+        <div class="card m-2" style="width: 18rem;">
+                    <%= image_tag moodboard.photo, class: "card-img-top" %>
+            <div class="card-body">
+                <h5 class="card-title"> <%= moodboard.moodboard_name  %> </h5>
+
+                    <%= link_to instudio_path(@instudio, moodboard_id: moodboard.id), method: :patch, class: "categories__list-btn btn-primary" do %>
+                        Book a <%= moodboard.moodboard_name %>
+                        <span class="fa-solid fa-arrow-right-long icon"></span>
+                    <% end %>  
+            </div>
+        </div>
+    <% end %>
+</div>

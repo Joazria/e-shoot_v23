@@ -1,0 +1,92 @@
+
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <ul class="resume text">
+            <li> <%= @client.first_name %></li>
+            <li> <%= @client.last_name %></li>
+            <li> <%= @client.company %></li>
+            <li><i class="fas fa-info"></i> <%= @client.cnpj %></li>
+            <li> <i class="fas fa-phone"></i> <%= @client.phone %></li>
+            <li> <i class="fab fa-whatsapp"></i> <%= @client.whatsapp %></li>
+            <li>  <i class="fas fa-map-pin"></i> <%= @client.address %></li>
+
+        </ul>
+    </div>
+
+ <div class="col-md-7 m-1">
+ INSTUDIO
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Session</th>
+                <th scope="col">Status</th>
+                <th scope="col">Date</th>
+                <th scope="col">Manequin</th>
+                <th scope="col">Period</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+
+            <% @instudios.each do |instudio| %>   
+
+                <tr>       
+                <th scope="row"> <%= instudio.id %> </th>
+                <td><% if instudio.product.nil? %>
+                    Model Shoot
+                    <% else  %> 
+                    Life Style
+                    <% end %> </td>
+                <td>To Be codded</td>
+                <td><%= instudio.calendar.deadline %></td>
+                <td><%= instudio.calendar.manequin %> </td>
+                <td><%= instudio.calendar.period %></td>
+               
+                </tr>
+                
+            <% end %>
+                
+
+            </tbody>
+
+    </div>
+
+    <div class="col-md-7 m-1">
+        <table class="table">
+            24 HOURS 
+
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Order</th>
+                <th scope="col">Status</th>
+                <th scope="col">Deadline </th>
+                <th scope="col">Delivery link</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+            <% @deliveries.each do |delivery| %>   
+                <tr>       
+                <th scope="row"> <%= delivery.order_id %> </th>
+                <td><%= delivery.order.category.category_name %> </td>
+                <td><%= delivery.step %></td>
+                <td><%= delivery.delivery_date %></td>
+                <td><%= delivery.delivery_link %></td>
+                </tr>
+                
+            <% end %>
+                
+
+            </tbody>
+        </table>
+
+
+    </div>
+ </div>

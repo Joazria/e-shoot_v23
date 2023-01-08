@@ -1,0 +1,39 @@
+<h1>Resume</h1>
+    <ul class="resume text">
+         <li> <%= @order.category.category_name %></li>
+        <li>Angles : <%= @order.angle.angle_name %> </li>
+        <li>Background : <%= @order.background.bg_name%></li>
+        <li>Size : <%= @order.size.size_name%></li>
+        <li>Briefing : <% if @briefing.present? %> <%= @briefing.release%></li>
+        <li>Ref1 : <%= @briefing.ref1%></li>
+
+        <li>Ref2 : <%= @briefing.ref2%> <% else %> NO BRIEFING <% end  %></li>
+    </ul>
+    <% if @briefing.present? %>
+        <% if @briefing.upload1.present?  %>
+            <div class="card" style="width: 18rem;">
+                <%= image_tag @briefing.upload1, class: "card-img-top"  %>
+            </div>
+        <% end %>
+
+        <% if @briefing.upload2.present? %>
+            <div class="card" style="width: 18rem;">
+                <%= image_tag @briefing.upload2, class: "card-img-top"  %>
+            </div>
+        <% end %>
+
+ <% end %>
+    <% if @client.nil? %>
+              <%= link_to new_client_path do %>
+            Confirme your order
+        <% end %>   
+     <% elsif %>   
+     Our Team will enter in contact soon with you to proceed your order  
+
+     <%= link_to profile_path do %>
+     go to your profile 
+    <% end  %>
+    <% end %>
+    
+
+<br>

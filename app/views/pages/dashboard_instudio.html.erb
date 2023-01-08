@@ -1,0 +1,77 @@
+
+
+<h2>INSTUDIO</h2>
+
+<table class="table">
+  <thead>
+      <tr>
+      <th scope="col">#</th>
+      <th scope="col"><i class="fas fa-info-circle"></i></th>
+      <th scope="col">Client</th>
+      <th scope="col">Category</th>
+      <th scope="col">Deadline</th>
+      <th scope="col">Status</th>
+      <th scope="col">Delivery</th>
+      <th scope="col">Edit</th>
+
+      </tr>
+  </thead>
+<tbody>
+                
+   <% @instudios.each do |instudio| %>   
+      <tr>       
+        <th scope="row"> <%= instudio.id %> </th>
+        <td scope="col"><i class="fas fa-info-circle"></i></td>
+        <td>
+          <%= instudio.user.client.company %> </td>
+
+        <td>
+          <% if instudio.product_id.nil? %> 
+            MODEL SHOOT           
+          <% else %>
+             LIFE STYLE
+
+          <% end %>
+          </td>
+       
+        <td>
+
+              <%# if delivery.order_id == order.id %>
+                  <i class="fas fa-calendar-week"></i> 
+                    <%= instudio.calendar.deadline.strftime("%m/%d/%Y") %> 
+        </td>
+         <td>
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%# if delivery.step.nil? %>
+                  <span class="badge badge-primary"> NEW </span>
+
+                    <%# else %>
+                      <%# <span class="badge badge-success"> <%= delivery.step %> </span> 
+
+                    <%# end -%>
+              </button>
+            <ul class="dropdown-menu">
+              <li>  Order pending</li>
+              <li>  Order approved</li>
+            
+            </ul>
+            
+          </div></td>
+
+                      <td> <h2>
+                      next
+                         </h2> </td>
+                      <td>               
+                        <%#= link_to edit_delivery_path(delivery) do %>
+                      <h2><i class="fas fa-edit"></i></h2>
+                    <%# end %></td>
+               <%# end %>      
+
+        
+  </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    

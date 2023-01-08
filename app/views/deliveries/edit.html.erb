@@ -1,0 +1,27 @@
+<br><br><br><br>
+<div class="container">
+  <h1>Delivery </h1>
+
+  <%= simple_form_for [ @order, @delivery ] do |f| %>
+    <div class="row">
+        <div class="col-6">
+            <%= f.input :step,
+                        collection: ['NEW', 'ACCEPT', 'STUDIO','EDITION','DELIVERED'],  
+                        label: 'Production Step' %>
+        </div>
+        <div class="col-6">
+            <%= f.input :delivery_date,
+                        as: :date, 
+                        label: 'Delivery Date' %>
+        </div>
+
+        <div class="col-12">
+            <%= f.input :delivery_link,
+                        label: 'Delivery link',
+                        placeholder: '...' %>
+        </div>
+    </div>
+     
+    <p><%= f.submit "Start", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

@@ -1,0 +1,77 @@
+<h1>Orders#edit</h1>
+
+<%= @client.last.company %>
+
+
+<br><br><br><br><br><br><br><br>
+<div class="container">
+  
+  <%= simple_form_for [ @order ] do |f| %>
+    <div class="row">
+
+            <div class="col-6">
+            <%= f.input :step,
+                        collection: ['NEW', 'ACCEPT', 'STUDIO','EDITION','DELIVERED'],  
+                        label: 'Statut' %>
+        </div>
+
+            <div class="col-6">
+            <%= f.input :delivery_url,
+                        label: 'Link Pacote Delivery' %>
+        </div>
+            <div class="col-6">
+            <%= f.input :delivery_date,
+                        as: :date,
+                        label: 'Dead Line to Delivery' %>
+        </div>
+        <div class="col-6">
+            <%= f.input :amounts,
+                        label: 'Amounts' %>
+        </div>
+
+        <div class="col-6">
+            <%= f.input :release,
+                         label: 'Briefing',
+                          as: :text %> 
+         </div>
+        <div class="col-12">
+            <%= f.input :ref1,
+                         label: 'References #1'  %>
+         </div>
+
+        <div class="col-12">
+            <%= f.input :ref2,
+                        label: 'References #2'   %>
+         </div>
+
+        <div class="col-12">
+            <%= f.input :bg_color,
+                         label: 'Background Color'  %>
+         </div>
+        <div class="col-12">
+        <%= Background.find(@order.background_id).bg_name%>
+            <%#= f.input :background_id,
+                         label: 'Background Id'  %>
+         </div>
+        <div class="col-12">
+         <%= Angle.find(@order.angle_id).angle_name%>
+            <%#= f.input :angle_id,
+                         label: 'Angle'  %>
+         </div>
+
+        <div class="col-12">
+           <%= Category.find(@order.category_id).category_name%>
+            <%#= f.input :category_id,
+                         label: 'Category'  %>
+         </div>
+
+       <div class="col-12">
+                  <%= Size.find(@order.size_id).size_name%>
+
+            <%#= f.input :size_id,
+                         label: 'Size'  %>
+         </div>
+
+    <p><%= f.submit "Edit Your Client Order", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

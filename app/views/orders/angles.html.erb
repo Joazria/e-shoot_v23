@@ -1,0 +1,20 @@
+ 
+
+<div class="container">
+    <% @angles.each do |angle| %>
+
+        <div class="card m-2" style="width: 18rem;">
+                    <%= image_tag angle.photo, class: "card-img-top" %>
+
+            <div class="card-body">
+                <h5 class="card-title"> <%= angle.angle_name  %> </h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    <%= link_to order_path(@order, angle_id: angle.id), action: :add_angle, method: :patch, class: "categories__list-btn btn-primary" do %>
+                        Book a <%= angle.angle_name %>
+                        <span class="fa-solid fa-arrow-right-long icon"></span>
+                        <% end %>  
+            </div>
+        </div>
+    <% end %>
+</div>

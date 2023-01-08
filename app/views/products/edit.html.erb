@@ -1,0 +1,34 @@
+<br><br><br><br><br><br><br><br>
+<div class="container">
+  <h1>Product Category Registration </h1>
+
+  <%= simple_form_for @product do |f| %>
+    <div class="row">
+        <div class="col-6">
+            <%= f.input :category_name,
+                        label: 'Product Category Name:',
+                        collection: [ 'Cosmetics',
+                                      'Electronics',
+                                      'Food & Beverages',
+                                      'Jewerly',
+                                      'Fashion',
+                                      'Fashion - Baby',
+                                      'Fashion - Assessories', 
+                                      'Fashion - Shop the look', 
+                                      'Homewear',
+                                      'Homewear - Kitchen',
+                                      'Homewear - Bathroom',
+                                      'Homewear - Bedroom',
+                                      'Homewear - Dining room'
+                                      ] %>
+        </div>
+
+        <div class="col-6">
+            <%= f.input :photo,
+                        label: 'Upload a banner',
+                        as: :file %>
+         </div>
+
+    <p><%= f.submit "Edit Your Product Category ", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

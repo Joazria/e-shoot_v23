@@ -1,0 +1,32 @@
+<br><br><br><br><br><br><br><br>
+<div class="container">
+  <h1>Background Registration </h1>
+
+  <%= simple_form_for [ @category, @background ] do |f| %>
+    <div class="row">
+        <div class="col-4">
+            <%= f.input :bg_name,
+                        label: 'Background',
+                        collection: ['NO Background', 'White Background', 'Colored Background' ]
+                         %>
+        </div>
+
+        <div class="col-4">
+            <%= f.input :bg_color,
+                        label: 'HEX code Color' %>
+         </div>
+
+        <div class="col-4">
+            <%= f.input :photo,
+                        label: 'Upload an image',
+                        as: :file %>
+         </div>
+        <div class="col-12">
+            <%= f.input :description,
+                        label: 'Description',
+                        placeholder: '...' %>
+         </div>
+
+    <p><%= f.submit "Create Your Background Product", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

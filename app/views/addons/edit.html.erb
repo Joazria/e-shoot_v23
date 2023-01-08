@@ -1,0 +1,21 @@
+<br><br><br><br><br><br><br><br>
+<div class="container">
+  <h1>Add On Registration </h1>
+    <h1> <%= @product.product_name  %> </h1>
+
+  <%= simple_form_for [ @product, @addon ] do |f| %>
+        <div class="row">
+        <div class="col-6">
+            <%= f.input :addon_name,
+                        label: 'Add-On Name' %>
+        </div>
+      
+        <div class="col-6">
+            <%= f.input :photo,
+                        label: 'Upload a photo',
+                        as: :file %>
+         </div>
+
+    <p><%= f.submit "Edit Your Add-On ", class: "btn btn-primary" %></p>
+  <% end %>
+</div>
