@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_27_160718) do
+ActiveRecord::Schema.define(version: 2023_01_09_213805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 2022_12_27_160718) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "instudio_id"
+    t.string "step"
+    t.string "delivery"
     t.index ["instudio_id"], name: "index_calendars_on_instudio_id"
   end
 
@@ -131,6 +133,7 @@ ActiveRecord::Schema.define(version: 2022_12_27_160718) do
     t.bigint "client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "step"
     t.index ["addon_id"], name: "index_instudios_on_addon_id"
     t.index ["client_id"], name: "index_instudios_on_client_id"
     t.index ["moodboard_id"], name: "index_instudios_on_moodboard_id"

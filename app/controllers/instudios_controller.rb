@@ -9,7 +9,6 @@ class InstudiosController < ApplicationController
   end   
 
 
-
   def addons
     @instudio = Instudio.find(params[:instudio_id])
     #  @category = Category.find(params[:category_id])
@@ -53,12 +52,16 @@ class InstudiosController < ApplicationController
       @instudio.update(instudio_params)
       redirect_to new_instudio_calendar_path(@instudio)
       
-    elsif  params[:moodboard_id].present?
+    elsif params[:moodboard_id].present?
       @instudio.update(instudio_params)
       redirect_to instudio_addons_path(@instudio)
-    else
-      redirect_to root_path
 
+    elsif params[:step].present?
+      @instudio.update(instudio_params)
+      redirect_to dashboard_path
+
+    else
+      render :new
         
       end
   end
@@ -79,6 +82,7 @@ class InstudiosController < ApplicationController
   def instudio_params
     params.permit(:product_id, 
                                   :moodboard_id,
+                                  :step,
                                   :addon_id,
                                   :calendar_id,
                                   :client_id )

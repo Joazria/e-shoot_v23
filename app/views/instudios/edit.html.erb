@@ -1,2 +1,38 @@
-<h1>Instudio#edit</h1>
-<p>Find me in app/views/instudio/edit.html.erb</p>
+
+
+<br><br><br><br><br><br><br><br>
+<div class="container">
+  <h1>Instudio Registration </h1>
+    <h1> <%= @instudio.product.product_name  %> </h1>
+
+. 
+ 
+ 
+ 
+ 
+ 
+
+
+
+  <%= simple_form_for @instudio do |f| %>
+        <div class="row">
+        <div class="col-6">
+            <%= f.input :step,
+                        label: 'STEP',
+                        collection: ['Order pending ',
+                                    'Order approved',
+                                    'Product preparation',
+                                    'Photographing',
+                                    'In edit',
+                                    'Re-edit',
+                                    'Waiting for Client Aproval',
+                                    'Waiting for Admin Aproval',
+                                    'Project Done',
+                                    'Ship back products' ] %>
+        </div>
+      
+
+
+    <p><%= f.submit "Edit Your instudio ", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

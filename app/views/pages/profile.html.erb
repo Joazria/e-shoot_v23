@@ -25,8 +25,9 @@
                 <th scope="col">Session</th>
                 <th scope="col">Status</th>
                 <th scope="col">Date</th>
-                <th scope="col">Manequin</th>
+                <th scope="col">Model</th>
                 <th scope="col">Period</th>
+                <th scope="col">Delivery</th>
                 </tr>
             </thead>
             
@@ -41,7 +42,7 @@
                     <% else  %> 
                     Life Style
                     <% end %> </td>
-                <td>To Be codded</td>
+                <td><%= instudio.calendar.step %></td>
                 <td><%= instudio.calendar.deadline %></td>
                 <td><%= instudio.calendar.manequin %> </td>
                 <td><%= instudio.calendar.period %></td>

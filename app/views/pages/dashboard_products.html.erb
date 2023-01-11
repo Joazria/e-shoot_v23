@@ -1,6 +1,6 @@
 
 
-<h2>INSTUDIO</h2>
+<h2>IN PRODUCTIONS</h2>
 
 <table class="table">
   <thead>
@@ -8,11 +8,9 @@
       <th scope="col">#</th>
       <th scope="col"><i class="fas fa-info-circle"></i></th>
       <th scope="col">Client</th>
-      <th scope="col">Category</th>
-      <th scope="col">Deadline</th>
-      <th scope="col">Period</th>
-      <th scope="col">Model</th>
+      <th scope="col">Order</th>
       <th scope="col">Status</th>
+      <th scope="col">Deadline</th>
       <th scope="col">Delivery</th>
       <th scope="col">Edit</th>
 
@@ -20,118 +18,102 @@
   </thead>
 <tbody>
                 
-   <% @instudios.each do |instudio| %>   
+   <% @deliveries.each do |delivery| %>   
       <tr>       
-        <th scope="row"> <%= instudio.id %> </th>
+        <th scope="row"> <%= delivery.order_id %> </th>
         <td scope="col"><i class="fas fa-info-circle"></i></td>
+        <td><%  @client = Client.where(:user_id == delivery.order.user.id) %>
+          <%= @client.first.company %> </td>
+        <td><%= delivery.order.category.category_name %> </td>
         <td>
-          <%= instudio.user.client.company %> </td>
-
-        <td>
-          <% if instudio.product_id.nil? %> 
-            MODEL SHOOT           
-          <% else %>
-             LIFE STYLE
-
-          <% end %>
-          </td>
-       
-        <td>
-
-              <%# if delivery.order_id == order.id %>
-                    <%= instudio.calendar.deadline.strftime("%d/%m/%Y") %> 
-                
-        </td>
-
-                <td>
-          <% if instudio.product_id.nil? %> 
-            <%= instudio.calendar.period %>     
-          <% else %>
-            <i class="fa-solid fa-ban"></i>
-          <% end %>
-          </td>
-                <td>
-          <% if instudio.product_id.nil? %> 
-            <%= instudio.calendar.manequin %>       
-          <% else %>
-             <i class="fa-solid fa-ban"></i>
-
-          <% end %>
-          </td>
-         <td>
-         <div class="dropdown">
+          <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <% if instudio.calendar.step.nil? %>
+                <% if delivery.step.nil? %>
                   <span class="badge badge-primary"> NEW </span>
 
                     <% else %>
-                      <span class="badge badge-success"> <%= instudio.calendar.step %> </span>
+                      <span class="badge badge-success"> <%= delivery.step %> </span>
 
                     <% end -%>
               </button>
             <ul class="dropdown-menu">
-                <% @calendar = Calendar.find_by(instudio_id: instudio.id) %>
-                
-
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'Order pending' %>
                             <%= f.submit 'Order pending', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li>
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'Order approved' %>
                             <%= f.submit 'Order approved', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li>
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'Product preparation' %>
                             <%= f.submit 'Product preparation', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li>
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'Photographing' %>
                             <%= f.submit 'Photographing', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li> 
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'In edit' %>
                             <%= f.submit 'In edit', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li>     
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'Re-edit' %>
                             <%= f.submit 'Re-edit', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li>  
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'Waiting for Client Aproval' %>
                             <%= f.submit 'Waiting for Client Aproval', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li>  
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'Photographing' %>
                             <%= f.submit 'Waiting for Admin Aproval', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li>     
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'Ship back products' %>
                             <%= f.submit 'Ship back products', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li>     
-              <li>  <%= simple_form_for @calendar, url: calendar_url(instudio.calendar.id), method: :patch, remote: true do |f| %>
+              <li>  <%= simple_form_for delivery, url: delivery_url(delivery.id), method: :patch, remote: true do |f| %>
                             <%= f.hidden_field :step, value: 'Project Done' %>
                             <%= f.submit 'Project Done', class: 'dropdown-item btn btn-sm btn-success m-1' %>
                           <% end %></li>  
             </ul>
+
+
+ 
+. 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
             
           </div></td>
+        <td>
 
-                      <td>   
-                      <% if instudio.calendar.delivery.nil?  %>
-                      <% else %>
-                        <%= link_to instudio.calendar.delivery do %>
-                            <h2><i class="fa-solid fa-link"></i></h2>
-                        <% end %> 
-                      <% end %> 
-                     </td>
+              <%# if delivery.order_id == order.id %>
+                  <i class="fas fa-calendar-week"></i> 
+                    <%= delivery.delivery_date %> </td>
+
+                      <td> <h2>
+                        <%= link_to delivery.delivery_link, target: :_blank  do  %>
+                          <i class="fas fa-images"></i> 
+                        <% end %>
+                         </h2> </td>
                       <td>               
-                        <%= link_to edit_calendar_path(instudio.calendar.id) do %>
+                        <%= link_to edit_delivery_path(delivery) do %>
                       <h2><i class="fas fa-edit"></i></h2>
                     <% end %></td>
                <%# end %>      
-
-        
   </tr>
     <% end %>
   </tbody>

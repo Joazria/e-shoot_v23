@@ -1,2 +1,47 @@
-<h1>Calendars#edit</h1>
-<p>Find me in app/views/calendars/edit.html.erb</p>
+<br><br><br><br><br><br><br><br>
+<div class="container">
+  <h1>Studio Request </h1>
+
+  <%= simple_form_for @calendar do |f| %>
+        <div class="row">
+              <div class="col-6">
+            <%= f.input :step,
+                        label: 'STEP',
+                        collection: ['Order pending ',
+                                    'Order approved',
+                                    'Product preparation',
+                                    'Photographing',
+                                    'In edit',
+                                    'Re-edit',
+                                    'Waiting for Client Aproval',
+                                    'Waiting for Admin Aproval',
+                                    'Project Done',
+                                    'Ship back products' ] %>
+        </div>
+        <div class="col-6">
+            <%= f.input :delivery,
+                        label: 'link'
+                        %>
+         </div>
+        <div class="col-12">
+            <%= f.input :manequin,
+                        label: 'Do You Need A Model',
+                        collection: ['Yes', 'No' ]
+                        %>
+         </div>
+                <div class="col-6">
+
+            <%= f.input :period,
+                        label: 'Period/Time',
+                        collection: ['2 Hours', 'Half Day', 'Full Day', ]
+                        %>
+         </div>
+        <div class="col-6">
+            <%= f.input :deadline,
+                        as: :date,
+                        html5: true,
+                        label: 'Choose a Date' %>
+        </div>
+    <p><%= f.submit "Edit Your Studio Session", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

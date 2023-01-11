@@ -38,6 +38,7 @@ Rails.application.routes.draw do
    get '/profile', to: 'pages#profile'
    get '/new', to: 'pages#new'
    get '/dashboard', to: 'pages#dashboard'
+   get '/dashboard_products', to: 'pages#dashboard_products'
    get '/dashboard_instudio', to: 'pages#dashboard_instudio'
 
    resources :orders do 

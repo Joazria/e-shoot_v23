@@ -32,7 +32,7 @@ class CalendarsController < ApplicationController
 
   def update
     if @calendar.update(calendar_params)
-      redirect_to products_path, notice: "Your Deadline was successfully updated."
+      redirect_to dashboard_instudio_path, notice: "Your Studio Session was successfully updated."
     else
       render :edit
     end
@@ -54,7 +54,9 @@ class CalendarsController < ApplicationController
   def calendar_params
     params.require(:calendar).permit(:deadline,
                                 :period,
+                                :step,
                                 :manequin, 
+                                :delivery,
                                 :instudio_id
                                 )
   end

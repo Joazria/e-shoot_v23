@@ -18,6 +18,10 @@ class PagesController < ApplicationController
     @deliveries = Delivery.all
   end
 
+  def dashboard_products
+    @deliveries = Delivery.all
+  end
+
   def dashboard_instudio
     @orders = Order.all
     @instudios = Instudio.all
